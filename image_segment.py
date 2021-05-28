@@ -17,10 +17,10 @@ def getAreaOfFood(img1):
     cv2.imwrite('{}\\3 img_filt.jpg'.format(data),img_filt)
     img_th = cv2.adaptiveThreshold(img_filt,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY,21,2)
     cv2.imwrite('{}\\4 img_th.jpg'.format(data),img_th)
-    contours, hierarchy = cv2.findContours(img_th, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE) #make change here
+    contours, hierarchy = cv2.findContours(img_th, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE) 
 
 
-	# find contours. sort. and find the biggest contour. the biggest contour corresponds to the plate and fruit.
+	# find contours. sort. and find the biggest contour. the biggest contour corresponds to the plate and food.
     mask = np.zeros(img.shape, np.uint8)
     largest_areas = sorted(contours, key=cv2.contourArea)
     cv2.drawContours(mask, [largest_areas[-1]], 0, (255,255,255,255), -1)
@@ -59,7 +59,7 @@ def getAreaOfFood(img1):
     erode_fruit = cv2.erode(fruit_bin,kernel,iterations = 1)
     cv2.imwrite('{}\\17 erode_fruit.jpg'.format(data),erode_fruit)
 
-	#find largest contour since that will be the fruit
+	#find largest contour since that will be the food
     img_th = cv2.adaptiveThreshold(erode_fruit,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY,11,2)
     cv2.imwrite('{}\\18 img_th.jpg'.format(data),img_th)
     contours, hierarchy = cv2.findContours(img_th, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
@@ -75,7 +75,7 @@ def getAreaOfFood(img1):
     fruit_final = cv2.bitwise_and(img1,img1,mask = mask_fruit2)
     cv2.imwrite('{}\\21 fruit_final.jpg'.format(data),fruit_final)
     
-	#find area of fruit
+	#find area of food
     img_th = cv2.adaptiveThreshold(mask_fruit2,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY,11,2)
     cv2.imwrite('{}\\22 img_th.jpg'.format(data),img_th)
     contours, hierarchy = cv2.findContours(img_th, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
