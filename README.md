@@ -4,8 +4,7 @@
 
 ## Nasla 
 
-+ ###  Problem
- The problem can be simply stated as, given a set of food images with calibration object thumb with the food name and an unlabeled set of food images from the same group of 
+
 + ### Data collection
 1. [FOODD](https://drive.google.com/drive/folders/1rmVS_n6P1859trFxKhY7iHVywjTIRYwn?usp=sharing)
 
